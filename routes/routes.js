@@ -35,6 +35,26 @@ module.exports = function(app, passport){
     failureFlash: true
   }));
 
+  // Facebook Login
+  app.get('/auth/facebook', passport.authenticate('facebook'));
+
+  // Facebook Callback
+  app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+    successRedirect : '/secret',
+    failureRedirect : '/login',
+    failureFlash: true
+  }));
+
+  // Twitter Login
+  app.get('/auth/twitter', passport.authenticate('twitter'));
+
+  // Twitter Callback
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+    successRedirect : '/twitter',
+    failureRedirect : '/login',
+    failureFlash: true
+  }));
+
     // Secret
   app.get('/secret', isLoggedIn, function(req, res){
     res.render('secret', { message: req.flash('loginMessage') });

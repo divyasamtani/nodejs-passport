@@ -1,0 +1,30 @@
+doctype html
+html
+  head
+    title Passport Secret
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+
+  body
+    .container
+      .row
+        .col-sm-8.col-sm-offset-2
+          h1 Twitter
+      .row
+        .col-sm-8.col-sm-offset-2
+          if (message.length > 0)
+           .alert.alert-success #{message}
+       .row#twitter
+        .col-sm-8.col-sm-offset-2
+          .span4.well(style='padding-bottom:0')
+            form(accept-charset='UTF-8', action='', method='POST')
+              .form-group
+                textarea#new_message.span4.form-control(name='new_tweet', placeholder='Type in your message', rows='5', style)
+              h6.pull-right
+                span.chars 140
+                |   characters remaining
+              button.btn.btn-info(type="submit") Post New Message
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js', integrity='sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa', crossorigin='anonymous')
+  script(src='/js/script.js')

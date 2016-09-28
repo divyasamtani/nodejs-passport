@@ -18,6 +18,10 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Support static files
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 // View Engine
 app.set( 'views', path.join(__dirname, 'views'));
 app.set( 'view engine', 'jade');
@@ -34,8 +38,11 @@ require('./config/passport')(passport);
 // Routes
 require('./routes/routes')(app, passport);
 
+//Twitter controller
+require('./controller/twitter')(app, passport);
+
 // listen
 app.listen( 3000, function(){
-    console.log('lisning on port 3000');
+    console.log('listening on port 3000');
 });
 
